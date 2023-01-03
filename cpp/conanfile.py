@@ -1,6 +1,6 @@
 from conan import ConanFile
 from conan import tools
-from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout
+from conan.tools.cmake import CMakeToolchain, CMake, CMakeDeps, cmake_layout
 from conan.tools.build import check_min_cppstd
 import os, re
 
@@ -32,7 +32,7 @@ class mytestRecipe(ConanFile):
     default_options = {"shared": True, "fPIC": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = "CMakeLists.txt", "src/*", "include/*"
+    exports_sources = "CMakeLists.txt", "src/*", "include/*", "test/*"
 
     def requirements(self):
         self.requires("gtest/1.12.1", build=True, test=True)
@@ -48,6 +48,8 @@ class mytestRecipe(ConanFile):
         cmake_layout(self)
 
     def generate(self):
+        deps = CMakeDeps(self)
+        deps.generate()
         tc = CMakeToolchain(self)
         tc.generate()
 
@@ -55,7 +57,8 @@ class mytestRecipe(ConanFile):
         cmake = CMake(self)
         cmake.configure()
         cmake.build()
-        cmake.test()
+        if not self.conf.get("tools.build:skip_test", default=False):
+            cmake.test()
 
     def package(self):
         cmake = CMake(self)

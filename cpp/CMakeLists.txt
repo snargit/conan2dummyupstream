@@ -36,9 +36,9 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE BUILDING_MYTEST)
 set_property(TARGET ${PROJECT_NAME} PROPERTY VERSION ${${PRJ_PREFIX}_VERSION})
 set_property(TARGET ${PROJECT_NAME} PROPERTY SOVERSION ${${PRJ_PREFIX}_VERSION_MAJOR})
 
-#if (NOT BUILD_TESTING STREQUAL OFF)
-#    enable_testing()
-#    add_subdirectory(test)
-#endif()
+if (NOT BUILD_TESTING STREQUAL OFF)
+    enable_testing()
+    add_subdirectory(test)
+endif()
 
 install(TARGETS ${PROJECT_NAME} FILE_SET HEADERS)

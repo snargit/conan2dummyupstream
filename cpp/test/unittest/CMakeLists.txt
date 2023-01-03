@@ -9,7 +9,7 @@ include(GoogleTest)
 
 set(${PRJ_PREFIX}_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-set(${PRJ_PREFIX}_SOURCES ${${PRJ_PREFIX}_SOURCE_DIR}/test.cpp
+set(${PRJ_PREFIX}_SOURCES ${${PRJ_PREFIX}_SOURCE_DIR}/test.cpp)
 
 add_executable(${PROJECT_NAME})
 target_sources(${PROJECT_NAME} PRIVATE ${${PRJ_PREFIX}_SOURCES})
