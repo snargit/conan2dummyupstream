@@ -25,8 +25,6 @@ os=Windows
 To (re)configure the code: From the cpp folder
 
 ```
-conan install .
-conan create .
+conan install --build=missing -o "*:shared=True"
+conan create --build=missing -o "*:shared=True"
 ```
-
-This should build the dll in the build\Release folder.
