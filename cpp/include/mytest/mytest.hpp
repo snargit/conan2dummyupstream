@@ -3,7 +3,7 @@
 #include <mytest/spec.hpp>
 
 namespace mytest {
-    
-    MYTEST_API
+
+    MYTEST_EXPORT
     void doMyTest();
 }
