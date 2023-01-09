@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 project(mytest CXX)
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+include(GenerateExportHeader)
 
 if (${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 message(FATAL_ERROR “In-source builds not allowed! Create a build directory and run CMake from there.” )
@@ -17,15 +19,16 @@ set(${PRJ_PREFIX}_VERSION
 set(${PRJ_PREFIX}_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(${PRJ_PREFIX}_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-set(${PRJ_PREFIX}_PUBLIC_HEADERS ${${PRJ_PREFIX}_INCLUDE_DIR}/mytest/mytest.hpp
-                                 ${${PRJ_PREFIX}_INCLUDE_DIR}/mytest/spec.hpp)
+set(${PRJ_PREFIX}_PUBLIC_HEADERS ${${PRJ_PREFIX}_INCLUDE_DIR}/mytest/mytest.hpp)
 
 set(${PRJ_PREFIX}_SOURCES ${${PRJ_PREFIX}_SOURCE_DIR}/mytest.cpp)
 
 source_group(TREE ${${PRJ_PREFIX}_INCLUDE_DIR} PREFIX include FILES ${${PRJ_PREFIX}_PUBLIC_HEADERS})
 source_group(TREE ${${PRJ_PREFIX}_SOURCE_DIR} PREFIX src FILES ${${PRJ_PREFIX}_SOURCES})
 
-add_library(${PROJECT_NAME} SHARED)
+add_library(${PROJECT_NAME})
+generate_export_header(${PROJECT_NAME}
+                       EXPORT_FILE_NAME ${${PRJ_PREFIX}_INCLUDE_DIR}/mytest/spec.hpp)
 target_sources(${PROJECT_NAME} PRIVATE ${${PRJ_PREFIX}_SOURCES})
 target_sources(${PROJECT_NAME} PUBLIC FILE_SET HEADERS BASE_DIRS ${${PRJ_PREFIX}_INCLUDE_DIR}
                                                FILES ${${PRJ_PREFIX}_PUBLIC_HEADERS})
@@ -42,3 +45,5 @@ if (NOT BUILD_TESTING STREQUAL OFF)
 endif()
 
 install(TARGETS ${PROJECT_NAME} FILE_SET HEADERS)
+install(FILES ${${PRJ_PREFIX}_INCLUDE_DIR}/mytest/spec.hpp
+              DESTINATION include/${PROJECT_NAME})
