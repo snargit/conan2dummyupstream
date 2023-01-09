@@ -4,5 +4,11 @@
 
 TEST(mytest, atest)
 {
-    mytest::doMyTest();
+    ASSERT_NO_THROW(mytest::doMyTest());
 }
+
+TEST(mytest, btest)
+{
+    ASSERT_NO_THROW(mytest::doMyTest());
+}
+
