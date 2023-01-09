@@ -63,3 +63,4 @@ _deps
 /cpp/test_package/test_output/build
 /out/build/
 /cpp/include/spec.hpp
+/cpp/include/mytest/spec.hpp
