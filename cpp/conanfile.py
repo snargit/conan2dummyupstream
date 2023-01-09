@@ -18,12 +18,13 @@ def get_version():
 class mytestRecipe(ConanFile):
     name = "mytest"
     version = get_version()
+    package_type = "library"
 
     # Optional metadata
     license = "<Put the package license here>"
     author = "<Put your name here> <And your email here>"
     url = "<Package recipe repository url here, for issues about the package>"
-    description = "<Description of spf-utils package here>"
+    description = "<Description of mytest package here>"
     topics = ("<Put some tag here>", "<here>", "<and here>")
 
     # Binary configuration
@@ -55,7 +56,7 @@ class mytestRecipe(ConanFile):
 
     def build(self):
         cmake = CMake(self)
-        cmake.configure()
+        cmake.configure(cli_args=["--log-level=VERBOSE"])
         cmake.build()
         if not self.conf.get("tools.build:skip_test", default=False):
             cmake.test()
