@@ -56,7 +56,7 @@ class mytestRecipe(ConanFile):
 
     def build(self):
         cmake = CMake(self)
-        cmake.configure(cli_args=["--log-level=VERBOSE"])
+        cmake.configure(cli_args=["--log-level=DEBUG"])
         cmake.build()
         if not self.conf.get("tools.build:skip_test", default=False):
             cmake.test()
