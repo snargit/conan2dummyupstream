@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23)
 project(unittest CXX)
-
+include(CMakePrintHelpers)
 string(TOUPPER ${PROJECT_NAME} PRJ_PREFIX)
 
 find_package(GTest CONFIG REQUIRED)
@@ -15,6 +15,10 @@ add_executable(${PROJECT_NAME})
 target_sources(${PROJECT_NAME} PRIVATE ${${PRJ_PREFIX}_SOURCES})
 source_group(TREE ${${PRJ_PREFIX}_SOURCE_DIR} PREFIX src FILES ${${PRJ_PREFIX}_SOURCES})
 target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gtest_main mytest)
+cmake_print_properties(
+    TARGETS GTest::gtest_main
+    PROPERTIES IMPORTED_CONFIGURATIONS
+)
 if (WIN32)
     add_custom_command(TARGET ${PROJECT_NAME}
                        POST_BUILD
