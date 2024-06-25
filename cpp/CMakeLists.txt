@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.24)
 project(mytest CXX)
 set(CMAKE_MESSAGE_LOG_LEVEL DEBUG)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)

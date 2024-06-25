@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.24)
 project(unittest CXX)
 include(CMakePrintHelpers)
 string(TOUPPER ${PROJECT_NAME} PRJ_PREFIX)

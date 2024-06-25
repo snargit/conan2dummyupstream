@@ -64,3 +64,4 @@ _deps
 /out/build/
 /cpp/include/spec.hpp
 /cpp/include/mytest/spec.hpp
+/cpp/test_package/build/msvc-193-x86_64-17-release
