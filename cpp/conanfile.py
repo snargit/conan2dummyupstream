@@ -36,7 +36,7 @@ class mytestRecipe(ConanFile):
     exports_sources = "CMakeLists.txt", "src/*", "include/*", "test/*"
 
     def requirements(self):
-        self.test_requires("gtest/1.12.1")
+        self.test_requires("gtest/1.14.0")
 
     def validate(self):
         check_min_cppstd(self, "17")
