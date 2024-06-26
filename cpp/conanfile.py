@@ -52,6 +52,9 @@ class mytestRecipe(ConanFile):
         deps = CMakeDeps(self)
         deps.generate()
         tc = CMakeToolchain(self)
+        # To stop VS going recursive when bootstrapping the config
+        # https://github.com/conan-io/cmake-conan/issues/544
+        tc.user_presets_path = ""
         tc.generate()
 
     def build(self):
