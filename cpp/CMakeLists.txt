@@ -4,6 +4,7 @@ project(mytest CXX)
 set(CMAKE_MESSAGE_LOG_LEVEL DEBUG)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 include(GenerateExportHeader)
+include(CTest)
 
 if (${CMAKE_CURRENT_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
 message(FATAL_ERROR “In-source builds not allowed! Create a build directory and run CMake from there.” )
