@@ -12,6 +12,7 @@ set(${PRJ_PREFIX}_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(${PRJ_PREFIX}_SOURCES ${${PRJ_PREFIX}_SOURCE_DIR}/test.cpp)
 
 add_executable(${PROJECT_NAME})
+add_test(NAME MyTests COMMAND ${PROJECT_NAME})
 target_sources(${PROJECT_NAME} PRIVATE ${${PRJ_PREFIX}_SOURCES})
 source_group(TREE ${${PRJ_PREFIX}_SOURCE_DIR} PREFIX src FILES ${${PRJ_PREFIX}_SOURCES})
 target_link_libraries(${PROJECT_NAME} PRIVATE GTest::gtest_main mytest)

@@ -650,7 +650,7 @@ endmacro()
 cmake_language(DEFER DIRECTORY "${CMAKE_SOURCE_DIR}" CALL conan_provide_dependency_check)
 
 # Configurable variables for Conan profiles
-set(CONAN_HOST_PROFILE "default;debug" CACHE STRING "Conan host profile")
+set(CONAN_HOST_PROFILE "default" CACHE STRING "Conan host profile")
 set(CONAN_BUILD_PROFILE "default;debug" CACHE STRING "Conan build profile")
 set(CONAN_INSTALL_ARGS "--build=missing" CACHE STRING "Command line arguments for conan install")
 

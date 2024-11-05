@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
-set(CMAKE_PROJECT_TOP_LEVEL_INCLUDES "conan_provider.cmake")
+#set(CMAKE_PROJECT_TOP_LEVEL_INCLUDES "conan_provider.cmake")
 project(mytest CXX)
 set(CMAKE_MESSAGE_LOG_LEVEL DEBUG)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
